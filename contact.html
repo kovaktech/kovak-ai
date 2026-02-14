@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim - KovakAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .info-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 60px;
+        }
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 60px;
+            max-width: 600px;
+            text-align: center;
+        }
+        .info-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0077b5 0%, #00a0dc 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 36px;
+            color: white;
+        }
+        .info-card h1 {
+            font-size: 28px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+        .info-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+        .linkedin-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #0077b5 0%, #00a0dc 100%);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .linkedin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 119, 181, 0.4);
+        }
+        .linkedin-btn i {
+            font-size: 24px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 30px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Disclaimer Banner -->
+    <div class="demo-banner" id="demoBanner">
+        <i class="fas fa-flask"></i>
+        <span><strong>Demo:</strong> Modeller hata yapabilir. Sonuçları bağımsız olarak teyit ediniz.</span>
+        <button class="banner-close" id="bannerClose" aria-label="Kapat"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <span>KovakAI</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="analyze.html">Analiz</a>
+                <a href="history.html">Geçmiş</a>
+                <a href="api.html" class="nav-btn">API Anahtarı Al</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section class="info-page">
+        <div class="info-card">
+            <div class="info-icon">
+                <i class="fab fa-linkedin-in"></i>
+            </div>
+            <h1>İletişim</h1>
+            <p>
+                KovakAI ekibiyle iletişime geçmek, iş birliği fırsatlarını değerlendirmek veya kariyer başvurusu yapmak için LinkedIn sayfamızı ziyaret edin.
+            </p>
+            <a href="https://www.linkedin.com/company/kovakai" target="_blank" rel="noopener" class="linkedin-btn">
+                <i class="fab fa-linkedin-in"></i>
+                LinkedIn'de Takip Et
+            </a>
+            <br>
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Ana Sayfaya Dön
+            </a>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

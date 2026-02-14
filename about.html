@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda - KovakAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .about-page {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 60px;
+        }
+        .about-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://lh4.googleusercontent.com/7kgMaRGf5UpcM7-tADmWOZlm9VE-6R45p8DRqVkPM7Tro9U6oL8hYj8EjLu7qXt8Xvi9hN18iB5i1bvwb7RVuBw9smQcKV2x_WcGuesu7TKpsfh1I8YbQ8-pzE9DIr3JAJoNksGJi_uaMRJGcQ') center/cover no-repeat;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        .about-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, transparent 30%, transparent 70%, var(--bg-primary) 100%);
+        }
+        .about-card {
+            position: relative;
+            z-index: 1;
+            background: rgba(26, 26, 36, 0.95);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 60px;
+            max-width: 700px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        [data-theme="light"] .about-card {
+            background: rgba(255, 255, 255, 0.95);
+        }
+        .about-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 36px;
+            color: white;
+        }
+        .about-card h1 {
+            font-size: 28px;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+        .about-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        .university-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent-primary);
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+        .university-badge i {
+            font-size: 18px;
+        }
+        .team-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .team-stat {
+            text-align: center;
+        }
+        .team-stat-value {
+            display: block;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+        .team-stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Disclaimer Banner -->
+    <div class="demo-banner" id="demoBanner">
+        <i class="fas fa-flask"></i>
+        <span><strong>Demo:</strong> Modeller hata yapabilir. Sonuçları bağımsız olarak teyit ediniz.</span>
+        <button class="banner-close" id="bannerClose" aria-label="Kapat"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <span>KovakAI</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="analyze.html">Analiz</a>
+                <a href="history.html">Geçmiş</a>
+                <a href="api.html" class="nav-btn">API Anahtarı Al</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section class="about-page">
+        <div class="about-bg"></div>
+        <div class="about-card">
+            <div class="about-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="university-badge">
+                <i class="fas fa-graduation-cap"></i>
+                Bilkent Üniversitesi
+            </div>
+            <h1>Ekibimiz</h1>
+            <p>
+                KovakAI, Bilkent Üniversitesi Elektrik-Elektronik Mühendisliği bölümünde öğrenim gören üç 4. sınıf mühendislik öğrencisi tarafından geliştirilen, ürünleşme ve ticarileşme odaklı bir girişim projesidir.
+            </p>
+            <p>
+                Ekibimiz; yapay zekâ, makine öğrenmesi, sinyal işleme ve bilgisayar ağları alanlarında araştırma ve geliştirme çalışmaları yürütmektedir.
+            </p>
+            <p>
+                Akademik altyapımızı, gerçek dünyada karşılaşılan problemlere doğrudan karşılık verebilen, uygulanabilir ve sürdürülebilir mühendislik çözümlerine dönüştürmeyi hedefliyoruz.
+            </p>
+            <p>
+                Erken aşamadan itibaren ürün geliştirme, hızlı prototipleme ve teknik demo oluşturma süreçlerinde aktif olarak yer aldık. KovakAI, yapay zekâ kaynaklı yanıltıcı içeriklere karşı güvenilir, şeffaf ve doğrulanabilir çözümler geliştirmeyi amaçlayan; teknik derinliği uygulama odağıyla birleştiren bir yaklaşım üzerine inşa edilmektedir.
+            </p>
+            <div class="team-info">
+                <div class="team-stat">
+                    <span class="team-stat-value">3</span>
+                    <span class="team-stat-label">Ekip Üyesi</span>
+                </div>
+                <div class="team-stat">
+                    <span class="team-stat-value">EEE</span>
+                    <span class="team-stat-label">Bölüm</span>
+                </div>
+                <div class="team-stat">
+                    <span class="team-stat-value">2026</span>
+                    <span class="team-stat-label">Mezuniyet</span>
+                </div>
+            </div>
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Ana Sayfaya Dön
+            </a>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

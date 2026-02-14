@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API - KovakAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .info-page {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 60px;
+        }
+        .info-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://lh4.googleusercontent.com/7kgMaRGf5UpcM7-tADmWOZlm9VE-6R45p8DRqVkPM7Tro9U6oL8hYj8EjLu7qXt8Xvi9hN18iB5i1bvwb7RVuBw9smQcKV2x_WcGuesu7TKpsfh1I8YbQ8-pzE9DIr3JAJoNksGJi_uaMRJGcQ') center/cover no-repeat;
+            opacity: 0.12;
+            z-index: 0;
+        }
+        .info-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, transparent 30%, transparent 70%, var(--bg-primary) 100%);
+        }
+        .info-card {
+            position: relative;
+            z-index: 1;
+            background: rgba(26, 26, 36, 0.95);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 60px;
+            max-width: 600px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        [data-theme="light"] .info-card {
+            background: rgba(255, 255, 255, 0.95);
+        }
+        .info-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 36px;
+            color: white;
+        }
+        .info-card h1 {
+            font-size: 28px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+        .info-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .info-badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent-primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Disclaimer Banner -->
+    <div class="demo-banner" id="demoBanner">
+        <i class="fas fa-flask"></i>
+        <span><strong>Demo:</strong> Modeller hata yapabilir. Sonuçları bağımsız olarak teyit ediniz.</span>
+        <button class="banner-close" id="bannerClose" aria-label="Kapat"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <span>KovakAI</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="analyze.html">Analiz</a>
+                <a href="history.html">Geçmiş</a>
+                <a href="api.html" class="nav-btn active">API Anahtarı Al</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section class="info-page">
+        <div class="info-bg"></div>
+        <div class="info-card">
+            <div class="info-icon">
+                <i class="fas fa-code"></i>
+            </div>
+            <span class="info-badge"><i class="fas fa-wrench"></i> Beta Yakında</span>
+            <h1>API Hizmeti</h1>
+            <p>
+                Beta sürümü yakın zamanda aktif olacaktır.
+            </p>
+            <p>
+                REST tabanlı API altyapımız; ses, video, görsel ve metin analizi için ayrı endpoint'ler, detaylı dokümantasyon ve SDK desteği ile geliştiricilere sunulacaktır.
+            </p>
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Ana Sayfaya Dön
+            </a>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

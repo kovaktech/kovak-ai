@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geçmiş - KovakAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/history.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Demo Disclaimer Banner -->
+    <div class="demo-banner" id="demoBanner">
+        <i class="fas fa-flask"></i>
+        <span><strong>Demo:</strong> Modeller hata yapabilir. Sonuçları bağımsız olarak teyit ediniz.</span>
+        <button class="banner-close" id="bannerClose" aria-label="Kapat"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <span>KovakAI</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="analyze.html">Analiz</a>
+                <a href="history.html" class="active">Geçmiş</a>
+                <a href="api.html" class="nav-btn">API Anahtarı Al</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="history-page">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="header-content">
+                    <h1>Analiz Geçmişi</h1>
+                    <p>Geçmiş analizlerinizi görüntüleyin ve yönetin</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" onclick="clearHistory()">
+                        <i class="fas fa-trash"></i>
+                        Tümünü Temizle
+                    </button>
+                    <a href="analyze.html" class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Yeni Analiz
+                    </a>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters-bar">
+                <div class="filters-left">
+                    <div class="filter-group">
+                        <label>Tür</label>
+                        <select id="filterType">
+                            <option value="all">Tüm Türler</option>
+                            <option value="audio">Ses</option>
+                            <option value="video">Video</option>
+                            <option value="image">Görsel</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Risk Seviyesi</label>
+                        <select id="filterRisk">
+                            <option value="all">Tüm Seviyeler</option>
+                            <option value="low">Düşük (0-30)</option>
+                            <option value="medium">Orta (31-60)</option>
+                            <option value="high">Yüksek (61-100)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="filters-right">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Dosya ara...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon total">
+                        <i class="fas fa-file-lines"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="totalScans">0</span>
+                        <span class="stat-label">Toplam Tarama</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon high-risk">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="highRiskCount">0</span>
+                        <span class="stat-label">Yüksek Risk</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon safe">
+                        <i class="fas fa-shield-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="safeCount">0</span>
+                        <span class="stat-label">Muhtemelen Güvenli</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon avg">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="avgScore">0</span>
+                        <span class="stat-label">Ort. Risk Skoru</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History List -->
+            <div class="history-container">
+                <div class="history-list" id="historyList">
+                    <!-- Dynamic content -->
+                </div>
+
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <div class="empty-icon">
+                        <i class="fas fa-inbox"></i>
+                    </div>
+                    <h3>Analiz Geçmişi Yok</h3>
+                    <p>Geçmişinizi görmek için dosya analiz etmeye başlayın</p>
+                    <a href="analyze.html" class="btn btn-primary">
+                        <i class="fas fa-upload"></i>
+                        İlk Dosyayı Analiz Et
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+                <p>&copy; 2026 KovakAI. Tüm hakları saklıdır.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Update stats
+        function updateStats() {
+            const history = JSON.parse(localStorage.getItem('kovakHistory') || '[]');
+            
+            document.getElementById('totalScans').textContent = history.length;
+            document.getElementById('highRiskCount').textContent = history.filter(h => h.riskScore > 60).length;
+            document.getElementById('safeCount').textContent = history.filter(h => h.riskScore <= 30).length;
+            
+            if (history.length > 0) {
+                const avg = Math.round(history.reduce((sum, h) => sum + h.riskScore, 0) / history.length);
+                document.getElementById('avgScore').textContent = avg;
+            }
+        }
+
+        // Filter functionality
+        document.getElementById('filterType')?.addEventListener('change', filterHistory);
+        document.getElementById('filterRisk')?.addEventListener('change', filterHistory);
+        document.getElementById('searchInput')?.addEventListener('input', filterHistory);
+
+        function filterHistory() {
+            const typeFilter = document.getElementById('filterType').value;
+            const riskFilter = document.getElementById('filterRisk').value;
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            
+            const items = document.querySelectorAll('.history-item');
+            
+            items.forEach(item => {
+                const type = item.querySelector('.history-icon').classList[1];
+                const score = parseInt(item.querySelector('.score-value').textContent);
+                const name = item.querySelector('.history-name').textContent.toLowerCase();
+                
+                let show = true;
+                
+                if (typeFilter !== 'all' && type !== typeFilter) show = false;
+                
+                if (riskFilter === 'low' && score > 30) show = false;
+                if (riskFilter === 'medium' && (score <= 30 || score > 60)) show = false;
+                if (riskFilter === 'high' && score <= 60) show = false;
+                
+                if (searchQuery && !name.includes(searchQuery)) show = false;
+                
+                item.style.display = show ? 'flex' : 'none';
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateStats();
+        });
+    </script>
+</body>
+</html>

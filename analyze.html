@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analiz - KovakAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/analyze.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Demo Disclaimer Banner -->
+    <div class="demo-banner" id="demoBanner">
+        <i class="fas fa-flask"></i>
+        <span><strong>Demo:</strong> Modeller hata yapabilir. Sonuçları bağımsız olarak teyit ediniz.</span>
+        <button class="banner-close" id="bannerClose" aria-label="Kapat"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <span>KovakAI</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="analyze.html" class="active">Analiz</a>
+                <a href="history.html">Geçmiş</a>
+                <a href="api.html" class="nav-btn">API Anahtarı Al</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="analyze-page">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>İçerik Analizi</h1>
+                <p>Yapay zeka üretimi içerikleri tespit etmek için ses, video veya görsel yükleyin</p>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tabs">
+                <button class="tab active" data-tab="upload">
+                    <i class="fas fa-cloud-arrow-up"></i>
+                    Dosya Yükle
+                </button>
+                <button class="tab" data-tab="text">
+                    <i class="fas fa-file-lines"></i>
+                    Metin Analizi
+                </button>
+                <button class="tab" data-tab="url">
+                    <i class="fas fa-link"></i>
+                    URL'den
+                </button>
+            </div>
+
+            <!-- Upload Tab -->
+            <div class="tab-content active" id="uploadTab">
+                <div class="analyze-grid">
+                    <!-- Left Column: Upload/Preview -->
+                    <div class="analyze-left">
+                        <!-- Upload Zone -->
+                        <div class="upload-zone" id="uploadZone">
+                            <input type="file" id="fileInput" accept="audio/*,video/*,image/*" hidden>
+                            <div class="upload-content" id="uploadContent">
+                                <div class="upload-icon">
+                                    <i class="fas fa-cloud-arrow-up"></i>
+                                </div>
+                                <h3>Dosyanızı buraya sürükleyin</h3>
+                                <p>veya seçmek için tıklayın</p>
+                                <div class="upload-formats">
+                                    <span><i class="fas fa-waveform-lines"></i> Ses</span>
+                                    <span><i class="fas fa-video"></i> Video</span>
+                                    <span><i class="fas fa-image"></i> Görsel</span>
+                                </div>
+                                <div class="upload-limits">
+                                    Maks dosya boyutu: 100MB • Desteklenen: MP3, WAV, MP4, MOV, JPG, PNG, WEBP
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Preview Section -->
+                        <div class="preview-section" id="previewSection" style="display: none;">
+                            <div class="preview-header">
+                                <div class="file-info">
+                                    <span class="file-name" id="fileName">filename.mp4</span>
+                                    <span class="file-meta">
+                                        <span id="fileSize">2.4 MB</span> • 
+                                        <span id="fileType">Video</span>
+                                    </span>
+                                </div>
+                                <button class="btn-icon" onclick="resetAnalysis()" title="Remove file">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="preview-content" id="previewContent">
+                                <!-- Dynamic content based on file type -->
+                            </div>
+                        </div>
+
+                        <!-- Progress Section -->
+                        <div class="progress-section" id="progressSection" style="display: none;">
+                            <div class="progress-header">
+                                <i class="fas fa-microchip"></i>
+                                <span id="progressStatus">Analyzing...</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <div class="progress-info">
+                                <span id="progressPercent">0%</span>
+                                <span class="progress-eta">Estimated: ~5s</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Results -->
+                    <div class="analyze-right">
+                        <div class="result-section" id="resultSection" style="display: none;">
+                            <!-- Main Result Card -->
+                            <div class="result-card main-result">
+                                <div class="result-header">
+                                    <h3>Tespit Sonucu</h3>
+                                    <span class="result-badge" id="modelVersion">kovak-v2.1</span>
+                                </div>
+                                
+                                <div class="risk-gauge-container">
+                                    <div class="risk-gauge" id="riskGauge">
+                                        <div class="gauge-inner">
+                                            <span class="risk-score" id="riskScore">0</span>
+                                            <span class="risk-text">Risk Skoru</span>
+                                        </div>
+                                    </div>
+                                    <div class="risk-label" id="riskLabel">ANALİZ EDİLİYOR...</div>
+                                </div>
+
+                                <div class="confidence-section">
+                                    <div class="confidence-header">
+                                        <span>Model Güvenilirliği</span>
+                                        <span id="confidenceValue">0%</span>
+                                    </div>
+                                    <div class="confidence-bar-container">
+                                        <div class="confidence-bar" id="confidenceBar"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Signals Card -->
+                            <div class="result-card signals-card">
+                                <div class="result-header">
+                                    <h3>Anahtar Sinyaller</h3>
+                                    <span class="signals-count" id="signalsCount">0 tespit edildi</span>
+                                </div>
+                                <div class="signals-list" id="signalsList">
+                                    <!-- Dynamic signals -->
+                                </div>
+                            </div>
+
+                            <!-- Actions -->
+                            <div class="result-actions">
+                                <button class="btn btn-primary" onclick="downloadReport()">
+                                    <i class="fas fa-download"></i>
+                                    Raporu İndir
+                                </button>
+                                <button class="btn btn-secondary" onclick="shareResult()">
+                                    <i class="fas fa-share-nodes"></i>
+                                    Paylaş
+                                </button>
+                                <button class="btn btn-secondary" onclick="resetAnalysis()">
+                                    <i class="fas fa-redo"></i>
+                                    Yeni Analiz
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Empty State -->
+                        <div class="empty-result" id="emptyResult">
+                            <div class="empty-icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <h3>Henüz Sonuç Yok</h3>
+                            <p>Analiz sonuçlarını görmek için bir dosya yükleyin</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text Tab -->
+            <div class="tab-content" id="textTab">
+                <div class="text-analyze-container">
+                    <div class="text-input-section">
+                        <h3>Analiz Edilecek Metni Yapıştırın</h3>
+                        <textarea id="textInput" placeholder="Yapay zeka üretimi olup olmadığını analiz etmek istediğiniz metni buraya yapıştırın..."></textarea>
+                        <div class="text-actions">
+                            <span class="char-count"><span id="charCount">0</span> / 10.000 karakter</span>
+                            <button class="btn btn-primary" onclick="analyzeText()">
+                                <i class="fas fa-microchip"></i>
+                                Metni Analiz Et
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="text-result-section" id="textResult" style="display: none;">
+                        <div class="result-card">
+                            <div class="result-header">
+                                <h3>Metin Analiz Sonucu</h3>
+                            </div>
+                            <div class="text-scores">
+                                <div class="text-score-item">
+                                    <span class="score-value" id="textRiskScore">0</span>
+                                    <span class="score-label">YZ Olasılığı</span>
+                                </div>
+                                <div class="text-score-item">
+                                    <span class="score-value" id="textPerplexity">0</span>
+                                    <span class="score-label">Perplexity</span>
+                                </div>
+                                <div class="text-score-item">
+                                    <span class="score-value" id="textBurstiness">0</span>
+                                    <span class="score-label">Burstiness</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="result-card">
+                            <div class="result-header">
+                                <h3>Cümle Analizi</h3>
+                                <div class="legend">
+                                    <span class="legend-item ai-high"><i class="fas fa-circle"></i> Yüksek YZ</span>
+                                    <span class="legend-item ai-medium"><i class="fas fa-circle"></i> Orta</span>
+                                    <span class="legend-item ai-low"><i class="fas fa-circle"></i> Düşük YZ</span>
+                                </div>
+                            </div>
+                            <div class="highlighted-text" id="highlightedText">
+                                <!-- Highlighted sentences will appear here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- URL Tab -->
+            <div class="tab-content" id="urlTab">
+                <div class="url-analyze-container">
+                    <div class="url-input-section">
+                        <h3>URL'den Analiz Et</h3>
+                        <p>Ses, video veya görsel dosyasına doğrudan bağlantı girin</p>
+                        <div class="url-input-wrapper">
+                            <i class="fas fa-link"></i>
+                            <input type="url" id="urlInput" placeholder="https://ornek.com/medya/dosya.mp4">
+                            <button class="btn btn-primary" onclick="analyzeUrl()">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div class="url-examples">
+                            <span>Desteklenen kaynaklar:</span>
+                            <div class="source-badges">
+                                <span class="source-badge"><i class="fab fa-youtube"></i> YouTube</span>
+                                <span class="source-badge"><i class="fab fa-twitter"></i> Twitter</span>
+                                <span class="source-badge"><i class="fas fa-globe"></i> Doğrudan Link</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Tab switching
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.dataset.tab;
+                
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === targetTab + 'Tab') {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Character count for text input
+        const textInput = document.getElementById('textInput');
+        const charCount = document.getElementById('charCount');
+        
+        textInput?.addEventListener('input', () => {
+            charCount.textContent = textInput.value.length;
+        });
+
+        // Download report (mock)
+        function downloadReport() {
+            alert('Rapor indirildi! (Demo)');
+        }
+
+        // Share result (mock)
+        function shareResult() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'KovakAI Analiz Sonucu',
+                    text: 'Bu yapay zeka içerik tespit sonucuna göz atın',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link panoya kopyalandı!');
+            }
+        }
+
+        // Analyze URL (mock)
+        function analyzeUrl() {
+            const urlInput = document.getElementById('urlInput');
+            if (!urlInput.value) {
+                alert('Lütfen bir URL girin');
+                return;
+            }
+            alert('URL analizi yakında! Şimdilik dosyayı indirip yükleyebilirsiniz.');
+        }
+    </script>
+</body>
+</html>

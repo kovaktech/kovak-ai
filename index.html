@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KovakAI - Yapay Zeka İçerik Tespit Platformu</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Demo Disclaimer Banner -->
+    <div class="demo-banner" id="demoBanner">
+        <i class="fas fa-flask"></i>
+        <span><strong>Demo:</strong> Modeller hata yapabilir. Sonuçları bağımsız olarak teyit ediniz.</span>
+        <button class="banner-close" id="bannerClose" aria-label="Kapat"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <span>KovakAI</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="active">Ana Sayfa</a>
+                <a href="analyze.html">Analiz</a>
+                <a href="history.html">Geçmiş</a>
+                <a href="api.html" class="nav-btn">API Anahtarı Al</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="grid-overlay"></div>
+            <div class="glow glow-1"></div>
+            <div class="glow glow-2"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="animate-fade-in-up">
+                Yapay Zeka Üretimi<br>
+                <span class="gradient-text">İçerikleri Tespit Edin</span>
+            </h1>
+            <p class="hero-subtitle animate-fade-in-up delay-1">
+                Deepfake videoları, ses klonlamayı, yapay zeka ile üretilmiş görselleri ve sentetik metinleri 
+                yüksek doğruluk oranıyla tespit edin. Dijital manipülasyonlara karşı korunun.
+            </p>
+            <div class="hero-buttons animate-fade-in-up delay-2">
+                <a href="analyze.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-upload"></i>
+                    Analiz Başlat
+                </a>
+            </div>
+            <div class="hero-stats animate-fade-in-up delay-3">
+                <div class="stat">
+                    <span class="stat-value" data-count="99.2">0</span>
+                    <span class="stat-label">% Doğruluk</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-value" data-count="2.3">0</span>
+                    <span class="stat-label">sn Ort. Hız</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-value" data-count="10">0</span>
+                    <span class="stat-label">K+ Dosya Tarandı</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual animate-fade-in delay-2">
+            <div class="demo-card">
+                <div class="demo-card-header">
+                    <span class="demo-dot red"></span>
+                    <span class="demo-dot yellow"></span>
+                    <span class="demo-dot green"></span>
+                </div>
+                <div class="demo-preview">
+                    <div class="scan-animation">
+                        <div class="scan-line"></div>
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop" alt="Demo face" class="demo-face">
+                        <div class="detection-boxes">
+                            <div class="detection-box box-1"></div>
+                            <div class="detection-box box-2"></div>
+                        </div>
+                    </div>
+                    <div class="demo-result">
+                        <div class="risk-indicator high">
+                            <span class="risk-value">87</span>
+                            <span class="risk-label">Risk Skoru</span>
+                        </div>
+                        <div class="demo-signals">
+                            <div class="signal high"><i class="fas fa-exclamation-triangle"></i> Yüz manipülasyonu tespit edildi</div>
+                            <div class="signal medium"><i class="fas fa-warning"></i> Doğal olmayan göz hareketi</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Özellikler</span>
+                <h2>Her Tür <span class="gradient-text">Yapay Zeka Manipülasyonunu</span> Tespit Edin</h2>
+                <p>Çoklu ortam tespit motorumuz ses, video, görsel ve metinleri en güncel modellerle analiz eder.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon audio">
+                        <i class="fas fa-microphone-lines"></i>
+                    </div>
+                    <h3>Ses Deepfake</h3>
+                    <p>Ses klonlama, sentetik konuşma ve ses manipülasyonlarını spektral analiz ile tespit edin.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Ses klonlama tespiti</li>
+                        <li><i class="fas fa-check"></i> Sentetik konuşma tanıma</li>
+                        <li><i class="fas fa-check"></i> Ses birleştirme tespiti</li>
+                    </ul>
+                    <div class="feature-accuracy">
+                        <div class="accuracy-bar">
+                            <div class="accuracy-fill" style="width: 94%"></div>
+                        </div>
+                        <span>%94 Doğruluk</span>
+                    </div>
+                </div>
+                <div class="feature-card featured">
+                    <div class="featured-badge">En Popüler</div>
+                    <div class="feature-icon video">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Video Deepfake</h3>
+                    <p>Yüz değiştirme, dudak senkronizasyonu ve sentetik video tespiti için kare kare analiz.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Yüz değiştirme tespiti</li>
+                        <li><i class="fas fa-check"></i> Zamansal tutarlılık kontrolü</li>
+                        <li><i class="fas fa-check"></i> GAN artifakt tespiti</li>
+                    </ul>
+                    <div class="feature-accuracy">
+                        <div class="accuracy-bar">
+                            <div class="accuracy-fill" style="width: 92%"></div>
+                        </div>
+                        <span>%92 Doğruluk</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon image">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Yapay Zeka Görselleri</h3>
+                    <p>DALL-E, Stable Diffusion, Midjourney ve diğer yapay zeka modelleriyle üretilen görselleri tespit edin.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Diffusion model imzaları</li>
+                        <li><i class="fas fa-check"></i> GAN artifakt tespiti</li>
+                        <li><i class="fas fa-check"></i> Manipülasyon bölgesi haritalama</li>
+                    </ul>
+                    <div class="feature-accuracy">
+                        <div class="accuracy-bar">
+                            <div class="accuracy-fill" style="width: 96%"></div>
+                        </div>
+                        <span>%96 Doğruluk</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon text">
+                        <i class="fas fa-file-lines"></i>
+                    </div>
+                    <h3>Yapay Zeka Metni</h3>
+                    <p>ChatGPT, Claude ve diğer büyük dil modelleri tarafından üretilen içerikleri tespit edin.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Perplexity analizi</li>
+                        <li><i class="fas fa-check"></i> Stilometrik örüntü analizi</li>
+                        <li><i class="fas fa-check"></i> Cümle bazlı puanlama</li>
+                    </ul>
+                    <div class="feature-accuracy">
+                        <div class="accuracy-bar">
+                            <div class="accuracy-fill" style="width: 89%"></div>
+                        </div>
+                        <span>%89 Doğruluk</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Sürec</span>
+                <h2>Nasıl <span class="gradient-text">Çalışır</span></h2>
+                <p>İçerik doğruluğunu doğrulamak için üç basit adım</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">
+                        <i class="fas fa-cloud-arrow-up"></i>
+                    </div>
+                    <h3>Yükle</h3>
+                    <p>Dosyanızı sürükleyip bırakın veya seçin. Ses, video, görsel ve metin desteği.</p>
+                </div>
+                <div class="step-connector">
+                    <div class="connector-line"></div>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>Analiz Et</h3>
+                    <p>Yapay zeka modellerimiz içeriğinizi gelişmiş tespit algoritmalarıyla işler.</p>
+                </div>
+                <div class="step-connector">
+                    <div class="connector-line"></div>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Sonuçlar</h3>
+                    <p>Detaylı risk skorları, anahtar sinyaller ve dışa aktarma seçenekleri.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Yapay Zeka İçeriklerini Tespit Etmeye Hazır mısınız?</h2>
+                <p>Ücretsiz analiz yapmaya başlayın. Kredi kartı gerekmez.</p>
+                <a href="analyze.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-rocket"></i>
+                    Hemen Dene
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-shield-halved"></i>
+                        </div>
+                        <span>KovakAI</span>
+                    </div>
+                    <p>Modern dünya için kurumsal düzeyde yapay zeka içerik tespiti.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Ürün</h4>
+                        <a href="analyze.html">Analiz</a>
+                        <a href="api.html">API</a>
+                        <a href="pricing.html">Fiyatlandırma</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Kaynaklar</h4>
+                        <a href="about.html">Dokümantasyon</a>
+                        <a href="about.html">Blog</a>
+                        <a href="about.html">Araştırma</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Şirket</h4>
+                        <a href="about.html">Hakkımızda</a>
+                        <a href="contact.html">İletişim</a>
+                        <a href="contact.html">Kariyer</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 KovakAI. Tüm hakları saklıdır.</p>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/company/kovakai" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
