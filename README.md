@@ -8,6 +8,8 @@ Deepfake ve yapay zeka ile üretilmiş içerikleri tespit eden web platformu.
 
 **[Canlı Demo →](https://kovaktech.github.io/kovak-ai)**
 
+🌐 **Web Sitesi:** https://kovaktech.github.io/kovak-ai
+
 ## Özellikler
 
 - 🎵 **Ses Deepfake** - Klonlanmış ses, sentetik konuşma tespiti
